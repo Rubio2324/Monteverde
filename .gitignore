@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.idea/
+
+# Secretos y configuración local
+.env
+*.env
+
+# Datos y archivos locales
+*.sqlite3
+uploads/
+backups/
+
+# Frontend (cuando exista)
+node_modules/
+dist/
