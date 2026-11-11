@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api'
 import { nombreDe, useCatalogos } from '../catalogos'
+import Acudientes from '../components/Acudientes'
 import Estado, { ETIQUETAS } from '../components/Estado'
 
 // Mismas transiciones que valida el backend
@@ -109,7 +110,7 @@ export default function BeneficiarioFicha() {
           <h1>{ficha.nombres} {ficha.apellidos}</h1>
           <p className="tenue">{ficha.tipo_identificacion} {ficha.numero_identificacion}</p>
         </div>
-        <Estado valor={ficha.estado} />
+        <div className="acciones"><Estado valor={ficha.estado} /><Link to={`/beneficiarios/${documento}/editar`} className="btn-suave">Editar</Link></div>
       </section>
 
       <div className="ficha-rejilla">
@@ -143,22 +144,7 @@ export default function BeneficiarioFicha() {
           </div>
         </section>
 
-        <section className="glass seccion">
-          <h2>Acudientes</h2>
-          {acudientes.length === 0 ? (
-            <p className="tenue">Sin acudientes vinculados.</p>
-          ) : (
-            <ul className="lista">
-              {acudientes.map((a) => (
-                <li key={a.numero_identificacion}>
-                  <strong>{a.nombres} {a.apellidos}</strong>
-                  <span>{a.vinculo} · {a.tipo_identificacion} {a.numero_identificacion}</span>
-                  <span>{[a.telefono, a.correo].filter(Boolean).join(' · ') || 'Sin contacto'}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
+        <Acudientes documento={documento} lista={acudientes} onCambio={cargar} />
 
         <section className="glass seccion">
           <h2>Estado y trazabilidad</h2>

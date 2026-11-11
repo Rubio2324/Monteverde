@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../api'
 import Estado, { ETIQUETAS } from '../components/Estado'
 
@@ -66,6 +66,7 @@ export default function Beneficiarios() {
             <option key={valor} value={valor}>{nombre}</option>
           ))}
         </select>
+        <Link to="/beneficiarios/nuevo" className="btn btn-enlace">+ Nuevo beneficiario</Link>
       </div>
 
       {error && <div className="alerta" role="alert">{error}</div>}

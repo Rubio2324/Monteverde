@@ -6,6 +6,8 @@ import Login from './pages/Login'
 import Placeholder from './pages/Placeholder'
 import Beneficiarios from './pages/Beneficiarios'
 import BeneficiarioFicha from './pages/BeneficiarioFicha'
+import BeneficiarioNuevo from './pages/BeneficiarioNuevo'
+import BeneficiarioEditar from './pages/BeneficiarioEditar'
 
 function Protegida({ children }) {
   const { user, cargando } = useAuth()
@@ -27,7 +29,9 @@ export default function App() {
       >
         <Route index element={<Dashboard />} />
         <Route path="beneficiarios" element={<Beneficiarios />} />
+        <Route path="beneficiarios/nuevo" element={<BeneficiarioNuevo />} />
         <Route path="beneficiarios/:documento" element={<BeneficiarioFicha />} />
+        <Route path="beneficiarios/:documento/editar" element={<BeneficiarioEditar />} />
         <Route path="cursos" element={<Placeholder titulo="Cursos" />} />
         <Route path="inscripciones" element={<Placeholder titulo="Inscripciones" />} />
         <Route path="auditoria" element={<Placeholder titulo="Auditoria" />} />
