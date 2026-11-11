@@ -318,3 +318,10 @@ input:disabled { opacity: 0.55; cursor: not-allowed; }
 .mini-form { display: grid; gap: 12px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .pequeno { font-size: 0.8rem; margin: 0; }
 .seccion .alerta { margin-top: 14px; }
+
+/* ---------- Cursos ---------- */
+.bloque { margin-top: 20px; }
+.enlace { color: var(--texto); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+.enlace:hover { border-bottom-color: var(--verde); color: #d1fae5; }
+.seccion > input + .pequeno { margin: 8px 0 14px; }
+input[type='time'] { color-scheme: dark; }

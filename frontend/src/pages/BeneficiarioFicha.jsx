@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { api } from '../api'
 import { nombreDe, useCatalogos } from '../catalogos'
 import Acudientes from '../components/Acudientes'
+import CursosDeBeneficiario from '../components/CursosDeBeneficiario'
 import Estado, { ETIQUETAS } from '../components/Estado'
 
 // Mismas transiciones que valida el backend
@@ -145,6 +146,7 @@ export default function BeneficiarioFicha() {
         </section>
 
         <Acudientes documento={documento} lista={acudientes} onCambio={cargar} />
+        <CursosDeBeneficiario documento={documento} />
 
         <section className="glass seccion">
           <h2>Estado y trazabilidad</h2>

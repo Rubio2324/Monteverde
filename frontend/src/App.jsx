@@ -8,6 +8,9 @@ import Beneficiarios from './pages/Beneficiarios'
 import BeneficiarioFicha from './pages/BeneficiarioFicha'
 import BeneficiarioNuevo from './pages/BeneficiarioNuevo'
 import BeneficiarioEditar from './pages/BeneficiarioEditar'
+import Cursos from './pages/Cursos'
+import CursoDetalle from './pages/CursoDetalle'
+import CursoEditor from './pages/CursoEditor'
 
 function Protegida({ children }) {
   const { user, cargando } = useAuth()
@@ -32,7 +35,10 @@ export default function App() {
         <Route path="beneficiarios/nuevo" element={<BeneficiarioNuevo />} />
         <Route path="beneficiarios/:documento" element={<BeneficiarioFicha />} />
         <Route path="beneficiarios/:documento/editar" element={<BeneficiarioEditar />} />
-        <Route path="cursos" element={<Placeholder titulo="Cursos" />} />
+        <Route path="cursos" element={<Cursos />} />
+        <Route path="cursos/nuevo" element={<CursoEditor />} />
+        <Route path="cursos/:id" element={<CursoDetalle />} />
+        <Route path="cursos/:id/editar" element={<CursoEditor />} />
         <Route path="inscripciones" element={<Placeholder titulo="Inscripciones" />} />
         <Route path="auditoria" element={<Placeholder titulo="Auditoria" />} />
       </Route>
