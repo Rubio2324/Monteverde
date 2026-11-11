@@ -19,3 +19,7 @@ backups/
 # Frontend (cuando exista)
 node_modules/
 dist/
+
+# Credenciales de Google
+credentials/
+*service-account*.json

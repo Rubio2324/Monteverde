@@ -9,6 +9,14 @@ class Settings(BaseSettings):
     max_intentos_login: int = 5
     bloqueo_minutos: int = 15
 
+    # Importacion de inscripciones
+    fuente_inscripciones: str = "archivo"  # "archivo" o "google"
+    archivo_inscripciones: str = "datos_prueba/inscripciones_prueba.json"
+    programa_inscripcion: str = "Juventus"
+    google_sheet_id: str | None = None
+    google_hoja_rango: str = "Respuestas de formulario 1"
+    google_credenciales: str = "credentials/google-service-account.json"
+
     model_config = SettingsConfigDict(env_file=".env")
 
 

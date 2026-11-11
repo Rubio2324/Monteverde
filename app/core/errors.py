@@ -8,3 +8,7 @@ class Conflicto(Exception):
 
 class ReglaNegocio(Exception):
     """Se incumple una regla de negocio (422)."""
+
+
+class FuenteNoDisponible(Exception):
+    """La fuente externa no responde o no esta configurada (503)."""
