@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
@@ -9,11 +10,18 @@ from app.controllers import (
     beneficiario_controller,
     inscripcion_controller,
     vinculo_controller,
+    catalogo_controller,
 )
 from app.core.errors import Conflicto, FuenteNoDisponible, NoEncontrado, ReglaNegocio
 from app.db.session import engine
 
 app = FastAPI(title="Monteverde")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def _manejador(codigo: int):
@@ -34,7 +42,7 @@ app.include_router(academico_controller.router, prefix="/api/v1")
 app.include_router(auditoria_controller.router, prefix="/api/v1")
 app.include_router(inscripcion_controller.router, prefix="/api/v1")
 app.include_router(vinculo_controller.router, prefix="/api/v1")
-app.include_router(vinculo_controller.router, prefix="/api/v1")
+app.include_router(catalogo_controller.router, prefix="/api/v1")
 
 
 @app.get("/health")

@@ -51,3 +51,29 @@ def buscar_preceptor(db: Session, texto) -> Profesor | None:
         if normalizar(f"{usuario.nombres} {usuario.apellidos}") == n:
             return profesor
     return None
+
+
+def listar_catalogos(db: Session) -> dict:
+    from app.models import Eps
+
+    def pares(modelo, id_columna):
+        return [
+            {"id": getattr(o, id_columna), "nombre": o.nombre}
+            for o in db.scalars(select(modelo).order_by(modelo.nombre))
+        ]
+
+    barrios = [
+        {
+            "id": b.id_barrio,
+            "nombre": b.nombre,
+            "localidad": b.localidad.value if b.localidad else None,
+        }
+        for b in db.scalars(select(Barrio).order_by(Barrio.nombre))
+    ]
+    return {
+        "barrios": barrios,
+        "eps": pares(Eps, "id_eps"),
+        "religiones": pares(Religion, "id_religion"),
+        "instituciones": pares(Institucion, "id_institucion"),
+        "programas": pares(Programa, "id_programa"),
+    }
